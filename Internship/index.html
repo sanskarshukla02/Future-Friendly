@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Cryptocurrency Chart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chart.js/3.7.0/chart.min.css" />
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            background-color: #f4f4f4; 
+            color: #333; 
+        }   
+        #controls {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        select { 
+            margin: 0 10px; 
+            padding: 10px; 
+            font-size: 16px; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            transition: border-color 0.3s;
+        }
+        select:hover { 
+            border-color: #007BFF; 
+            cursor: pointer; 
+        }
+        #loading { 
+            display: none; 
+            font-size: 18px; 
+            color: #007BFF; 
+            text-align: center; 
+            margin-bottom: 20px; 
+        }
+        #chart-container { 
+            width: 100%; 
+            max-width: 800px; 
+            height: 400px; 
+            margin: 0 auto; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            background-color: #fff; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+            overflow: hidden; 
+        }
+        h1 {
+            text-align: center; 
+            margin-bottom: 20px;
+            color: #007BFF;
+        }
+        .spinner {
+    border: 8px solid #f3f3f3; /* Light gray */
+    border-top: 8px solid #007BFF; /* Blue */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+    </style>
+</head>
+<body>
+    <h1>Live Cryptocurrency Chart</h1>
+    <div id="controls">
+        <select id="coin-selector">
+            <option value="ethusdt">ETH/USDT</option>
+            <option value="bnbusdt">BNB/USDT</option>
+            <option value="dotusdt">DOT/USDT</option>
+        </select>
+        <select id="interval-selector">
+            <option value="1m">1 Minute</option>
+            <option value="3m">3 Minutes</option>
+            <option value="5m">5 Minutes</option>
+        </select>
+    </div>
+    <div id="loading" class="spinner" style="display: none;"></div>
+    <div id="chart-container">
+        <canvas id="candlestickChart"></canvas>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/3.7.0/chart.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
